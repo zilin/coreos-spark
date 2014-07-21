@@ -73,6 +73,9 @@ else
   stop_shell)
     stop_docker $SHELL_NAME
     ;;
+  fetch_docker_dns)
+    wget https://github.com/zilin/docker-dns/releases/download/v0.0.1/docker-dns
+    ;;
   *)
     print_help
     ;;
