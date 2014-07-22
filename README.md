@@ -2,17 +2,18 @@ coreos-spark
 ============
 
 This repository contains a script for running Spark in CoreOS. It was adapted from https://github.com/amplab/docker-scripts.
+
+### Pull Docker Images
+First, you need pull a few Docker Images:
+```
+./spark.sh pull_images
+```
+
 ### Setup DNS service
 Before you start a Spark Cluster, you need setup a DNS service. Here we use https://github.com/zilin/docker-dns instead of dnsmasq to provide DNS inside Docker containers.
 
 #### Fetch Docker-DNS
-Run the following command to fetch pre-compiled docker-dns binary from github:
-```
-./spark.sh fetch_docker_dns
-```
-
-#### Install Docker-DNS
-Then run the following command to install docker-dns binary and system unit file to CoreOS:
+Run the following command to fetch pre-compiled docker-dns binary from github and install it (and system unit file) to CoreOS:
 ```
 ./spark.sh install_docker_dns
 ```
