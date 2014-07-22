@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DNS_IP=$(ip -o -4 addr list docker0 | awk -F" " '{print $4}'| sed -e 's/\/.*$//')
+DOCKER_INTERFACE=docker0
+DNS_IP=$(ip -o -4 addr list $DOCKER_INTERFACE | awk -F" " '{print $4}'| sed -e 's/\/.*$//')
 DNS_IP2=8.8.8.8
 DNS_SEARCH=docker.local
 DNS_PARAM="--dns $DNS_IP --dns $DNS_IP2 --dns-search $DNS_SEARCH"
@@ -54,7 +55,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-ExecStart=$DOCKER_DNS_DIR/docker-dns
+ExecStart=$DOCKER_DNS_DIR/docker-dns -i $DOCKER_INTERFACE -d $DNS_SEARCH
 Restart=on-failure
 RestartSec=1
 
