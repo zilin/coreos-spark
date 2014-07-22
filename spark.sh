@@ -74,6 +74,12 @@ else
   fetch_docker_dns)
     wget https://github.com/zilin/docker-dns/releases/download/v0.0.1/docker-dns
     ;;
+  install_docker_dns)
+    DOCKER_DNS_DIR=/opt/docker-dns
+    sudo mkdir -p $DOCKER_DNS_DIR && sudo chown -R core: $DOCKER_DNS_DIR
+    sudo mv docker-dns $DOCKER_DNS_DIR
+    sudo cp units/docker-dns.service /etc/systemd/system/ && sudo systemctl start docker-dns
+    ;;
   *)
     print_help
     ;;
