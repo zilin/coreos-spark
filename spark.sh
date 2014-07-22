@@ -33,7 +33,14 @@ function docker_stop() {
 function docker_wait() {
   NAME=$1
   QUERY_STRING=$2
-  $DOCKER logs $NAME | grep "$QUERY_STRING"
+  echo -n "waiting "
+  $DOCKER logs $NAME | grep "$QUERY_STRING" > /dev/null
+  until [ "$?" -eq 0 ]; do
+    echo -n "."
+    sleep 1
+    $DOCKER logs $NAME | grep "$QUERY_STRING" > /dev/null
+  done
+  echo ""
 }
 
 function install_docker_dns {
