@@ -38,7 +38,7 @@ function docker_wait() {
 
 function install_docker_dns {
   sudo mkdir -p $DOCKER_DNS_DIR && sudo chown -R core: $DOCKER_DNS_DIR
-  sudo mv $1 $DOCKER_DNS_DIR
+  sudo mv $1 $DOCKER_DNS_DIR && sudo chmod +x $DOCKER_DNS_DIR/$1
   sudo tee /etc/systemd/system/docker-dns.service > /dev/null << EOF
 [Unit]
 Description=Simple Docker DNS Server
