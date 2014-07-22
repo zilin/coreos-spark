@@ -64,7 +64,7 @@ function print_help() {
   echo "          start_master,stop_master,"
   echo "          start_worker,stop_worker,"
   echo "          start_shell,stop_shell,"
-  echo "          fetch_docker_dns,install_docker_dns"
+  echo "          install_docker_dns"
   echo "  params: # of workers"
   echo ""
 }
@@ -111,10 +111,8 @@ else
   stop_shell)
     docker_stop $SHELL_NAME
     ;;
-  fetch_docker_dns)
-    wget https://github.com/zilin/docker-dns/releases/download/v0.0.1/docker-dns
-    ;;
   install_docker_dns)
+    wget https://github.com/zilin/docker-dns/releases/download/v0.0.1/docker-dns
     install_docker_dns ./docker-dns
     ;;
   *)
