@@ -10,7 +10,7 @@ First, you need pull a few Docker Images:
 ```
 
 ### Setup DNS service
-Before you start a Spark Cluster, you need setup a DNS service. Here we use https://github.com/zilin/docker-dns instead of dnsmasq to provide DNS inside Docker containers. Run the following command to fetch pre-compiled docker-dns binary from github and install it (and system unit file) to CoreOS:
+Before you start a Spark Cluster, you need setup a DNS service. Here we use [docker-dns](https://github.com/zilin/docker-dns) instead of dnsmasq to provide DNS inside Docker containers. Run the following command to fetch pre-compiled docker-dns binary from github and install it (and system unit file) to CoreOS:
 ```
 ./spark.sh install_docker_dns
 ```
